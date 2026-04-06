@@ -42,7 +42,7 @@ The app consists of two pages:
 
 Both pages are split into focused, reusable components to keep the code readable:
 
-`src/
+src/
 ├── components/
 │ └── todos/
 │ ├── AddTodoDialog.tsx # Dialog form for creating a new todo
@@ -55,7 +55,7 @@ Both pages are split into focused, reusable components to keep the code readable
 ├── pages/
 │ ├── TodoListPage.tsx
 │ └── TodoIdPage.tsx
-└── types.ts`
+└── types.ts
 
 ### UI & Styling
 
