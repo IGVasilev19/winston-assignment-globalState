@@ -42,20 +42,23 @@ The app consists of two pages:
 
 Both pages are split into focused, reusable components to keep the code readable:
 
-src/
-├── components/
-│ └── todos/
-│ ├── AddTodoDialog.tsx # Dialog form for creating a new todo
-│ ├── TodoStatsBar.tsx # Total / Active / Done stat cards
-│ ├── TodoListItem.tsx # Single todo row with edit & delete actions
-│ ├── TodoStatusBadge.tsx # Completed / Active status pill
-│ └── TodoCardActions.tsx # Edit, cancel, delete button group
-├── context/
-│ └── global-context.tsx # GlobalState — todos + CRUD operations
-├── pages/
-│ ├── TodoListPage.tsx
-│ └── TodoIdPage.tsx
-└── types.ts
+### Component Structure
+
+Both pages are split into focused, reusable components to keep the code readable:
+
+- `src/`
+  - `components/todos/`
+    - `AddTodoDialog.tsx` — Dialog form for creating a new todo
+    - `TodoStatsBar.tsx` — Total / Active / Done stat cards
+    - `TodoListItem.tsx` — Single todo row with edit & delete actions
+    - `TodoStatusBadge.tsx` — Completed / Active status pill
+    - `TodoCardActions.tsx` — Edit, cancel, delete button group
+  - `context/`
+    - `global-context.tsx` — GlobalState, todos + CRUD operations
+  - `pages/`
+    - `TodoListPage.tsx`
+    - `TodoIdPage.tsx`
+  - `types.ts`
 
 ### UI & Styling
 
