@@ -41,6 +41,7 @@ The app consists of two pages:
 ### Component Structure
 
 Both pages are split into focused, reusable components to keep the code readable:
+
 `src/
 ├── components/
 │ └── todos/
