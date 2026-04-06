@@ -1,10 +1,12 @@
 import { useState } from "react"
 import { useParams, useNavigate, useSearchParams } from "react-router-dom"
 import { useGlobalContext } from "@/context/global-context"
-import { CircleCheckBig, Clock, ArrowLeft, Pencil, Trash2 } from "lucide-react"
+import { ArrowLeft } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
 import { Textarea } from "@/components/ui/textarea"
+import TodoStatusBadge from "@/components/todos/TodoStatusBadge"
+import TodoCardActions from "@/components/todos/TodoCardActions"
 
 const TodoIdPage = () => {
   const { id } = useParams()
@@ -44,7 +46,6 @@ const TodoIdPage = () => {
   return (
     <div className="flex min-h-screen w-full flex-col items-center bg-white px-4 py-8 sm:px-0">
       <div className="w-full max-w-xl">
-        {/* Back button */}
         <button
           onClick={() => navigate(-1)}
           className="mb-6 flex items-center gap-2 text-sm text-gray-500 transition-colors hover:text-black"
@@ -53,51 +54,22 @@ const TodoIdPage = () => {
           Back
         </button>
 
-        {/* Card */}
         <div className="flex flex-col gap-6 rounded-2xl border border-gray-200 p-6 shadow-sm">
-          {/* Status badge + Actions */}
           <div className="flex items-center justify-between">
-            <span
-              className={`flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-medium ${
-                todo.completed
-                  ? "bg-green-100 text-green-700"
-                  : "bg-yellow-100 text-yellow-700"
-              }`}
-            >
-              {todo.completed ? (
-                <CircleCheckBig className="size-3.5" />
-              ) : (
-                <Clock className="size-3.5" />
-              )}
-              {todo.completed ? "Completed" : "Active"}
-            </span>
-
-            <div className="flex gap-2">
-              {isEditing && (
-                <Button onClick={() => setIsEditing(false)}>Cancel</Button>
-              )}
-              {!isEditing && (
-                <Button size="icon" className="size-8" onClick={handleEdit}>
-                  <Pencil className="size-4" />
-                </Button>
-              )}
-              <Button
-                size="icon"
-                variant="destructive"
-                className="size-8"
-                onClick={() => {
-                  deleteTodo(todo.id)
-                  navigate(-1)
-                }}
-              >
-                <Trash2 className="size-4" />
-              </Button>
-            </div>
+            <TodoStatusBadge completed={todo.completed} />
+            <TodoCardActions
+              isEditing={isEditing}
+              onEdit={handleEdit}
+              onCancelEdit={() => setIsEditing(false)}
+              onDelete={() => {
+                deleteTodo(todo.id)
+                navigate(-1)
+              }}
+            />
           </div>
 
           <div className="h-px bg-gray-100" />
 
-          {/* Title */}
           <div>
             <p className="mb-1 text-xs tracking-widest text-gray-400 uppercase">
               Title
@@ -115,7 +87,6 @@ const TodoIdPage = () => {
             )}
           </div>
 
-          {/* Description */}
           <div>
             <p className="mb-1 text-xs tracking-widest text-gray-400 uppercase">
               Description
@@ -133,7 +104,6 @@ const TodoIdPage = () => {
             )}
           </div>
 
-          {/* Date */}
           <div>
             <p className="mb-1 text-xs tracking-widest text-gray-400 uppercase">
               Created
@@ -150,7 +120,6 @@ const TodoIdPage = () => {
 
           <div className="h-px bg-gray-100" />
 
-          {/* Actions */}
           {isEditing ? (
             <Button onClick={handleSave} className="w-full">
               Save changes
