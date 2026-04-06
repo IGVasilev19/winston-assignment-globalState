@@ -41,7 +41,7 @@ The app consists of two pages:
 ### Component Structure
 
 Both pages are split into focused, reusable components to keep the code readable:
-src/
+`src/
 ├── components/
 │ └── todos/
 │ ├── AddTodoDialog.tsx # Dialog form for creating a new todo
@@ -54,7 +54,7 @@ src/
 ├── pages/
 │ ├── TodoListPage.tsx
 │ └── TodoIdPage.tsx
-└── types.ts
+└── types.ts`
 
 ### UI & Styling
 
@@ -94,7 +94,7 @@ pnpm run dev
 
 ## Use of AI
 
-AI (ChatGPT / Perplexity) was used during this assignment as a productivity tool — primarily for:
+AI was used during this assignment as a productivity tool — primarily for:
 
 - Separating page code into smaller components faster
 - TypeScript type error fixes
